@@ -16,17 +16,30 @@ class Habilidade {
         this.energia = energia;
     }
 }
+
 // Instacia Classes - Criar Objetos
+
 let hero = new Personagem ("Link","Herói do Tempo",100,100,0);
 let boss = new Personagem("Skull Kid", "Majora's Mask",100,0,50);
+
 // Preencher os Status
+
 document.getElementById("nome-hero").textContent = hero.nome;
 document.getElementById("titulo-hero").textContent = hero.titulo;
 document.getElementById("nome-boss").textContent = boss.nome;
 document.getElementById("titulo-boss").textContent = boss.titulo;
+
 // Criar habilidades
+
+let containerBtn = document.getElementById("controles");
 let listaHabilidades =      [
     new Habilidade(1, "Ataque⚔️", 4, 0, 0),
     new Habilidade(2, "Skill✨", 8, 10, 0),
     new Habilidade(3, "Ultimate💥", 15, 0, 100)
 ];
+listaHabilidades.forEach(hab => {
+    let btn = document.createElement("button");//<button>
+    btn.innerText = hab.nome;
+    containerBtn.appendChild(btn);
+
+})
