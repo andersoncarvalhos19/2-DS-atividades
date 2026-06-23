@@ -15,5 +15,39 @@ formulario.addEventListener(
 );
 // Função de cadastrar produto
 function cadastrarProduto(event) {
-    event.preventDefalt();
+    console.log("debug")
+    event.preventDefault();
+    // Captura dos dados do formulario
+    console.log("debug")
+    let nome = document.getElementById("nome").value;
+    let categoria = document.getElementById("categoria").value;
+    let quantidade = document.getElementById("quantidade").value;
+    let preco = document.getElementById("preco").value;
+    // Criação do objeto
+    let produto = {
+        nome,
+        categoria,
+        quantidade,
+        preco
+    }
+    // Adicionar o produto na lista
+    produtos.push(produto);
+    // Renderizar dados na tabela
+    const tabela =
+        document.getElementById("tabelaProdutos");
+        tabela.innerHTML = "";
+    produtos.forEach(
+        function(produto, indice) {
+        tabela.innerHTML += `
+        <tr>
+            <td>${produto.nome}</td>
+            <td>${produto.categoria}</td>
+            <td>${produto.quantidade}</td>
+            <td>${produto.preco}</td>
+            <td><a href="#">Excluir</a></td>
+        </tr>
+        `
+        }
+    )
+    formulario.reset();
 }
